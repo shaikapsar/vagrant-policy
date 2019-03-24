@@ -45,8 +45,8 @@ do
     pushd $HOME/$comp
     git checkout casablanca
     git pull
-    if [[ $comp == "engine" ]]; then
-        cp $HOME/docker/Dockerfile.engine $HOME/$comp/packages/docker/src/main/docker/Dockerfile
+    if [[ $comp == "drools-pdp" ]]; then
+        cp $HOME/docker/Dockerfile.pdpd $HOME/$comp/packages/docker/src/main/docker/Dockerfile
          mvn install -Dmaven.test.skip=true
     fi
     # mvn install -Dmaven.test.skip=true
