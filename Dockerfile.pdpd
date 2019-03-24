@@ -38,8 +38,8 @@ RUN cd /opt && \
     sudo tar xzf apache-maven-3.3.9-bin.tar.gz && \
     rm -rf /usr/bin/mvn && \
     sudo ln -s /opt/apache-maven-3.3.9/bin/mvn /usr/bin/mvn && \
-    echo -e "#!/bin/bash \nMAVEN_HOME=/opt/apache-maven-3.3.9 \nPATH=$MAVEN_HOME/bin:$PATH \nexport PATH MAVEN_HOME \nexport CLASSPATH=.\n" | sudo tee /etc/profile.d/apache-maven.sh && \
-    source /etc/profile.d/apache-maven.sh && \
+    echo "#!/bin/bash \nMAVEN_HOME=/opt/apache-maven-3.3.9 \nPATH=$MAVEN_HOME/bin:$PATH \nexport PATH MAVEN_HOME \nexport CLASSPATH=.\n" > /etc/profile.d/apache-maven.sh && \
+    . /etc/profile.d/apache-maven.sh && \
     mvn -version 
 
 # install MariaDB client
