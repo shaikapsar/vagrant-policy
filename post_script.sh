@@ -15,7 +15,7 @@
 
 set -ex
 
-docker exec -it drools bash
+sudo docker exec -it drools bash
     rm -rf /tmp/apps-controlloop
     mkdir /tmp/apps-controlloop
     cd /tmp/apps-controlloop
@@ -23,19 +23,19 @@ docker exec -it drools bash
     mkdir /tmp/basex-controlloop
 exit
 
-docker cp /home/vagrant/.m2/repository/org/onap/policy/drools-applications/controlloop/packages/apps-controlloop/*/apps-controlloop-*.zip drools:/tmp/apps-controlloop/apps-controlloop.zip
-docker cp /home/vagrant/.m2/repository/org/onap/policy/drools-applications/controlloop/packages/basex-controlloop/*/basex-controlloop-*.tar.gz drools:/tmp/basex-controlloop/basex-controlloop.tar.gz
+sudo docker cp /home/vagrant/.m2/repository/org/onap/policy/drools-applications/controlloop/packages/apps-controlloop/*/apps-controlloop-*.zip drools:/tmp/apps-controlloop/apps-controlloop.zip
+sudo docker cp /home/vagrant/.m2/repository/org/onap/policy/drools-applications/controlloop/packages/basex-controlloop/*/basex-controlloop-*.tar.gz drools:/tmp/basex-controlloop/basex-controlloop.tar.gz
 
-docker exec -it drools bash
+sudo docker exec -it drools bash
   cd /tmp/apps-controlloop/ 
   unzip apps-controlloop.zip
   cd /tmp/basex-controlloop
   tar zxvf basex-controlloop.tar.gz
 exit 
 
-docker cp ./apps-controlloop-installer drools:/tmp/apps-controlloop/apps-controlloop-installer
+sudo docker cp ./apps-controlloop-installer drools:/tmp/apps-controlloop/apps-controlloop-installer
 
-docker exec -it drools bash
+sudo docker exec -it drools bash
   cd /tmp/apps-controlloop/
   policy stop
   ./apps-controlloop-installer
