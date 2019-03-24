@@ -48,7 +48,7 @@ do
     if [[ $comp == "drools-pdp" ]]; then
         cp $HOME/docker/Dockerfile.pdpd $HOME/$comp/packages/docker/src/main/docker/Dockerfile
     fi
-    # mvn install -Dmaven.test.skip=true
+    mvn install -Dmaven.test.skip=true
     popd
 done
 
@@ -59,8 +59,6 @@ popd
 pushd $HOME/drools-pdp/packages/docker/target/
     sudo docker build -t onap/policy-drools policy-drools
 popd
-
-
 
 cd $HOME/docker
 
