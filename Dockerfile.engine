@@ -23,6 +23,15 @@ RUN echo "policy ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/policy && \
     chmod 0440 /etc/sudoers.d/policy && \
     visudo -c || rm /etc/sudoers.d/policy
 
+RUN cd /opt && \
+    wget http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
+    sudo tar xzf apache-maven-3.3.9-bin.tar.gz && \
+    rm -rf /usr/bin/mvn && \
+    sudo ln -s /opt/apache-maven-3.3.9/bin/mvn /usr/bin/mvn && \
+    echo -e "#!/bin/bash \nMAVEN_HOME=/opt/apache-maven-3.3.9 \nPATH=$MAVEN_HOME/bin:$PATH \nexport PATH MAVEN_HOME \nexport CLASSPATH=.\n" | sudo tee /etc/profile.d/apache-maven.sh && \
+    source /etc/profile.d/apache-maven.sh && \
+    mvn -version 
+
 # install MariaDB client
 RUN apk --update add --no-cache mariadb-client
 

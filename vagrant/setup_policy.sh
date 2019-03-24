@@ -47,8 +47,9 @@ do
     git pull
     if [[ $comp == "engine" ]]; then
         cp $HOME/docker/Dockerfile.engine $HOME/$comp/packages/docker/src/main/docker/Dockerfile
+         mvn install -Dmaven.test.skip=true
     fi
-    mvn install -Dmaven.test.skip=true
+    # mvn install -Dmaven.test.skip=true
     popd
 done
 
