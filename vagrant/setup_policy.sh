@@ -47,7 +47,6 @@ do
     git pull
     if [[ $comp == "drools-pdp" ]]; then
         cp $HOME/docker/Dockerfile.pdpd $HOME/$comp/packages/docker/src/main/docker/Dockerfile
-         mvn install -Dmaven.test.skip=true
     fi
     # mvn install -Dmaven.test.skip=true
     popd
@@ -78,3 +77,7 @@ declare -a arr=(PDPD-CONFIGURATION unauthenticated.DCAE_CL_OUTPUT APPC-CL APPC-L
 done
 
 sudo -E docker-compose up -d
+
+chmod +x ./post_script.sh
+
+./post_script.sh
