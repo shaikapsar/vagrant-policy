@@ -80,4 +80,4 @@ sudo -E docker-compose up -d
 
 chmod +x ./post_script.sh
 
-./post_script.sh
+#./post_script.sh
