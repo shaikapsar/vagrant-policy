@@ -70,3 +70,10 @@ export MTU=1500
 pushd $HOME/docker/dmaap
 sudo -E docker-compose up 
 popd
+#Generate topics
+declare -a arr=(PDPD-CONFIGURATION unauthenticated.DCAE_CL_OUTPUT APPC-CL APPC-LCM-WRITE SDNR-CL-RSP); for topic in "${arr[@]}"; do \
+  curl -X POST -H "Content-Type: application/json" -d \
+    '{"topicName":"'"$topic"'","partitionCount":"1","replicationCount":"1","transactionEnabled":"false"}' "http://localhost:3904/topics/create"; \
+done
+
+sudo -E docker-compose up 
