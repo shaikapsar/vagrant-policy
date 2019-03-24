@@ -67,4 +67,4 @@ cd $HOME/docker
 chmod +x config/drools/drools-tweaks.sh
 echo 192.168.56.10 > config/pe/ip_addr.txt
 export MTU=1500
-sudo -E docker-compose up -f docker-compose-dmaap.yml -d
+sudo -E docker-compose up -f docker-compose-dmaap.yml -d  --force-recreate
