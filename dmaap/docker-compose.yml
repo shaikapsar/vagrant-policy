@@ -4,7 +4,9 @@ services:
     image: nexus3.onap.org:10001/onap/dmaap/zookeeper:1.0.0
     ports:
       - "2181:2181"
-
+    networks:
+      dmaap:
+        ipv4_address: 172.19.0.2
   kafka:
    #CADI integrated kafka image
    #image: nexus3.onap.org:10001/onap/dmaap/kafka01101:0.0.2
@@ -32,6 +34,9 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
    depends_on:
     - zookeeper
+   networks:
+     dmaap:
+       ipv4_address: 172.19.0.3
 
   dmaap:
     image: nexus3.onap.org:10001/onap/dmaap/dmaap-mr:1.1.9
@@ -43,10 +48,14 @@ services:
     depends_on:
       - zookeeper
       - kafka
+    networks:
+      dmaap:
+        ipv4_address: 172.19.0.4
+
 networks:
-  default:
+  dmaap:
     driver: bridge
     ipam:
       driver: default
       config:
-      - subnet:  172.19.0.1/16
+      - subnet:  172.19.0.0/16
