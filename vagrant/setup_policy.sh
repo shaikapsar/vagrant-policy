@@ -48,7 +48,7 @@ do
     if [[ $comp == "drools-pdp" ]]; then
         cp $HOME/docker/Dockerfile.pdpd $HOME/$comp/packages/docker/src/main/docker/Dockerfile
     fi
-    mvn llean install -Dmaven.test.skip=true
+    mvn clean install -Dmaven.test.skip=true
     popd
 done
 

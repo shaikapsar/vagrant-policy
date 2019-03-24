@@ -49,6 +49,10 @@ services:
       command: pap
       volumes:
        - ./config/pe:/tmp/policy-install/config
+      extra_hosts:
+       - "portal.api.simpledemo.onap.org:192.168.56.10"
+       - "policy.api.simpledemo.onap.org:192.168.56.11"
+       - "mr.api.simpledemo.onap.org:192.168.56.11"
    pdp:
       image: onap/policy-pe
       container_name: pdp
@@ -60,6 +64,10 @@ services:
       command: pdp
       volumes:
        - ./config/pe:/tmp/policy-install/config
+      extra_hosts:
+       - "portal.api.simpledemo.onap.org:192.168.56.10"
+       - "policy.api.simpledemo.onap.org:192.168.56.11"
+       - "mr.api.simpledemo.onap.org:192.168.56.11"
    brmsgw:
       image: onap/policy-pe
       container_name: brmsgw
@@ -69,6 +77,10 @@ services:
       command: brmsgw
       volumes:
        - ./config/pe:/tmp/policy-install/config
+      extra_hosts:
+       - "portal.api.simpledemo.onap.org:192.168.56.10"
+       - "policy.api.simpledemo.onap.org:192.168.56.11"
+       - "mr.api.simpledemo.onap.org:192.168.56.11"
    drools:
       image: onap/policy-drools
       container_name: drools
@@ -82,3 +94,8 @@ services:
        - "9696:9696"
       volumes:
        - ./config/drools:/tmp/policy-install/config
+      extra_hosts:
+       - "portal.api.simpledemo.onap.org:192.168.56.10"
+       - "policy.api.simpledemo.onap.org:192.168.56.11"
+       - "mr.api.simpledemo.onap.org:192.168.56.11"
+       
