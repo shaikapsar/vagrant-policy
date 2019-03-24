@@ -31,7 +31,7 @@ cp $HOME/oparent/settings.xml $HOME/.m2
 cd $HOME
 if [  ! -d docker ] ; then
 git clone https://github.com/shaikapsar/vagrant-policy docker
-git checkout casablanca
+
 git pull
 fi
 
