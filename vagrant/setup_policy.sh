@@ -68,7 +68,7 @@ chmod +x config/drools/drools-tweaks.sh
 echo 192.168.56.10 > config/pe/ip_addr.txt
 export MTU=1500
 pushd $HOME/docker/dmaap
-sudo -E docker-compose up 
+sudo -E docker-compose up -d
 popd
 #Generate topics
 declare -a arr=(PDPD-CONFIGURATION unauthenticated.DCAE_CL_OUTPUT APPC-CL APPC-LCM-WRITE SDNR-CL-RSP); for topic in "${arr[@]}"; do \
@@ -76,4 +76,4 @@ declare -a arr=(PDPD-CONFIGURATION unauthenticated.DCAE_CL_OUTPUT APPC-CL APPC-L
     '{"topicName":"'"$topic"'","partitionCount":"1","replicationCount":"1","transactionEnabled":"false"}' "http://localhost:3904/topics/create"; \
 done
 
-sudo -E docker-compose up 
+sudo -E docker-compose up -d
