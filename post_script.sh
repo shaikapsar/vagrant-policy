@@ -33,11 +33,12 @@ sudo docker exec -it drools bash
   tar zxvf basex-controlloop.tar.gz
 exit 
 
-sudo docker cp ./apps-controlloop-installer drools:/tmp/apps-controlloop/apps-controlloop-installer
+sudo docker cp /home/vagrant/docker/apps-controlloop-installer drools:/tmp/apps-controlloop/apps-controlloop-installer
 
 sudo docker exec -it drools bash
   cd /tmp/apps-controlloop/
   policy stop
+  sudo chmod 755 apps-controlloop-installer
   ./apps-controlloop-installer
   policy start
   features status
