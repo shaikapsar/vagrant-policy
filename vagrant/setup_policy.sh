@@ -31,10 +31,10 @@ cp $HOME/oparent/settings.xml $HOME/.m2
 cd $HOME
 if [  ! -d docker ] ; then
 git clone https://github.com/shaikapsar/vagrant-policy docker
+
+fi
 cd docker
 git pull
-fi
-
 
 for comp in common drools-pdp drools-applications engine
 do
@@ -48,7 +48,7 @@ do
     if [[ $comp == "drools-pdp" ]]; then
         cp $HOME/docker/policy-drools-pdp-Dockerfile $HOME/$comp/packages/docker/src/main/docker/Dockerfile
     fi
-    mvn install -Dmaven.test.skip=true
+    #mvn install -Dmaven.test.skip=true
     popd
 done
 
@@ -63,7 +63,7 @@ popd
 
 
 cd $HOME/docker
-git checkout casablanca
+
 chmod +x config/drools/drools-tweaks.sh
 echo 192.168.56.10 > config/pe/ip_addr.txt
 export MTU=1500
